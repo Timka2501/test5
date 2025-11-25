@@ -4,10 +4,10 @@ window = display.set_mode((900, 800))
 display.set_caption('Pind-pong')
 
 game = True
-timer
+timer = time.Clock()
 
-class GameSprite(sprite.Sprite)
-    def __init__(self, filename, x, y, width=30, height=200)
+class GameSprite(sprite.Sprite):
+    def __init__(self, filename, x, y, width=30, height=200):
         super().__init__()
         self.image = transform.scale(image.load(filename), (width, height))
         self.rect = self.image.get_rect()
@@ -18,15 +18,15 @@ class GameSprite(sprite.Sprite)
 
 player_left = GameSprite('platform.png', 5, 300)
 player_right = GameSprite('platform.png', 865, 300)
-ball = GameSprite('ball.png' 400, 350, width=100, height=100)
+ball = GameSprite('ball.png', 400, 350, width=100, height=100)
 
 while game:
     window.fill((200, 220, 255))
     for e in event.get():
         if e.type == QUIT:
             game = False
-        player_left.draw()
-        player_right.draw()
-        ball.draw()
-        display.update()
-        timer.tick(60)
+    player_left.draw()
+    player_right.draw()
+    ball.draw()
+    display.update()
+    timer.tick(60)
